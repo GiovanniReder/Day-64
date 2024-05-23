@@ -1,15 +1,30 @@
 package pratica.entities;
 
 import pratica.enums.Dipartimento;
+import pratica.interfaces.checkIn;
 
-public class DipendentePartTime extends Dipendente{
+public class DipendentePartTime extends Dipendente implements checkIn {
+
+    private int oreLavorate;
 
     public DipendentePartTime(int matricola, double stipendio, Dipartimento dipartimento) {
         super(matricola, stipendio, dipartimento);
     }
-    public void calculateSalary(){
-        int oreLavorate = 100;
+
+    public void setOreLavorate(int oreLavorate) {
+        this.oreLavorate = oreLavorate;
+    }
+
+    @Override
+    public double calculateSalary() {
+
         double pagaOraria = 10;
-        System.out.println( "Ciao non sono ricco ma guadagno:" + oreLavorate * pagaOraria);
+        return oreLavorate * pagaOraria;
+
+    }
+
+    @Override
+    public void checkIn() {
+        System.out.println("Inizio alle 11 ");
     }
 }

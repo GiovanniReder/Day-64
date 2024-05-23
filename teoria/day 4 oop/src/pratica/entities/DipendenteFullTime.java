@@ -1,20 +1,23 @@
 package pratica.entities;
 
 import pratica.enums.Dipartimento;
+import pratica.interfaces.checkIn;
 
-public class DipendenteFullTime extends Dipendente{
+public class DipendenteFullTime extends Dipendente implements checkIn {
 
     public DipendenteFullTime(int matricola, double stipendio, Dipartimento dipartimento) {
         super(matricola, stipendio, dipartimento);
     }
+
     //METHOD
-    public void calculateSalary(){
-        System.out.println( "Ciao non sono ricco ma guadagno:" + this.getStipendio() );
+    @Override
+    public double calculateSalary() {
+        return this.getStipendio();
     }
 
+
     @Override
-    public astract Salary() {
-        for ()
-        return super.Salary();
+    public void checkIn() {
+        System.out.println("Inizio alle 9 ");
     }
 }

@@ -1,32 +1,42 @@
 package pratica;
 
-import pratica.entities.Dipendente;
-import pratica.entities.DipendenteFullTime;
-import pratica.entities.DipendentePartTime;
-import pratica.entities.Dirigente;
+import pratica.entities.*;
 import pratica.enums.Dipartimento;
 
 public class Main {
     public static void main(String[] args) {
 
-        DipendentePartTime dipendente1= new DipendentePartTime(5, 30, Dipartimento.PRODUZIONE);
+        DipendentePartTime dipendente1 = new DipendentePartTime(5, 1000, Dipartimento.PRODUZIONE);
         dipendente1.calculateSalary();
+        dipendente1.setOreLavorate(100);
 
-        DipendenteFullTime dipendente2= new DipendenteFullTime(10,2000, Dipartimento.AMMINISTRAZIONE);
+
+        DipendenteFullTime dipendente2 = new DipendenteFullTime(10, 2000, Dipartimento.AMMINISTRAZIONE);
         dipendente2.calculateSalary();
 
-        Dirigente dipendente3= new Dirigente(15,2500, Dipartimento.VENDITE);
+        Dirigente dipendente3 = new Dirigente(15, 2500, Dipartimento.VENDITE);
         dipendente3.calculateSalary();
-        
+
+        Volontario dipendente4 = new Volontario(1, 0, Dipartimento.PRODUZIONE);
+        dipendente4.calculateSalary();
+
+
+        double sum = 0;
+
         Dipendente[] dipendenti = {dipendente1, dipendente2, dipendente3};
         for (int i = 0; i < dipendenti.length; i++) {
             dipendenti[i].stampaMatricola();
-        } for (int i = 0; i < dipendenti.length; i++) {
-            dipendenti[i].stampaMatricola();
+
+            sum += dipendenti[i].calculateSalary();
+
 
         }
+        System.out.println(sum);
+        Dipendente[] tutti = {dipendente1, dipendente2, dipendente3, dipendente4};
+        for (int i = 0; i < tutti.length; i++) {
 
-
+            tutti[i].checkIn();
+        }
 
 
     }
